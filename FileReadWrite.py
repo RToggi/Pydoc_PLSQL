@@ -3,6 +3,7 @@ class ReadWrite:
         pass
 
     def file_read(self, fn):
+        """Returns list of lines stored in a file"""
         try:
             f = open(fn, "r")
         except IOError as err:
@@ -12,13 +13,16 @@ class ReadWrite:
         return contents
 
     def file_write(self, fn, contents):
+        """Writes onto the lines"""
         try:
             f = open(fn, "w+")
         except IOError as err:
             print(err.message)
-        f.writelines(contents)
+        print (f.writelines(contents))
         f.close()
 
 
 if __name__ == "__main__":
-    ReadWrite.file_write("test.txt", "Hello Test File Write")
+    a = ReadWrite()
+    # a.file_write("test.txt", "Hello Test File Write")
+    # print(a.file_read("test.txt"))
