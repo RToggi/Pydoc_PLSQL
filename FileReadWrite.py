@@ -22,7 +22,6 @@ class ReadWrite:
         f.close()
 
 
-if __name__ == "__main__":
-    a = ReadWrite()
+ReadWriteobj = ReadWrite()
     # a.file_write("test.txt", "Hello Test File Write")
     # print(a.file_read("test.txt"))
