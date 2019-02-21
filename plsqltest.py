@@ -10,12 +10,18 @@ txt = ""
 print contents
 comments = []
 for i in contents:
-    if "\"\"\"" in i or foundq == 0:
-        foundq = 1
+    if "\"\"\"" in i:
+        foundq = foundq + 1
+    if foundq == 1:
         comments.append(i)
-    if foundq == 1 and "\"\"\"" in i:
+    if foundq == 2:
         foundq = 0
-        continue
+
 print "Only Comments"
-print comments
+
+# for i in range(len(comments)):
+#     comments[i] = comments[i].strip()
+# print comments
+
+FileReadWrite.ReadWriteobj.file_write("Ouput.txt", comments)
 print len(comments)
