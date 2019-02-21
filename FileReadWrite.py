@@ -15,11 +15,12 @@ class ReadWrite:
     def file_write(self, fn, contents):
         """Writes onto the lines"""
         try:
-            f = open(fn, "w+")
+            f = open(fn, "a+")
         except IOError as err:
             print(err.message)
         print (f.writelines(contents))
         f.close()
+        pass
 
 
 ReadWriteobj = ReadWrite()

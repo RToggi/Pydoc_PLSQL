@@ -1,0 +1,18 @@
+Procedure:  'InsertSalary'
+Parameter: EmployeeNo: The employee number.
+
+Parameter: Gross: The gross value.
+
+Parameter: Deduction: The deduction value of particular employee.
+
+Parameter: NetPay: Stores the net payment of an employee.        
+
+Insert into Table:  'Salary'
+Parameter: EmployeeNo
+
+Parameter: Gross
+
+Parameter: Deduction
+
+Parameter: NetPay 
+

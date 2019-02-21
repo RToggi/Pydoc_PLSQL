@@ -10,11 +10,11 @@ Create a procedure 'InsertSalary'
 
 CREATE PROCEDURE InsertSalary ( 
    IN in_EmployeeNo INTEGER, IN in_Gross INTEGER, 
-   IN in_Deduction INTEGER, IN in_NetPay INTEGER 
+   IN in_Deduction INTEGER, IN in_NetPay INTEGER
 ) 
 
 """
-Inserts the table records into columns
+Inserts the table records into 'Salary'
 
 :param EmployeeNo
 :param Gross
