@@ -1,7 +1,7 @@
-import FileReadWrite
+from FileReadWrite import *
 import re
-
-contents = FileReadWrite.ReadWriteobj.file_read("pydocteradata.sql")
+from txtmatch import *
+contents = file_read("pydocteradata.sql")
 
 
 def pick_comments():
@@ -18,7 +18,7 @@ def pick_comments():
         if found_q == 2:
             found_q = 0
 
-    FileReadWrite.ReadWriteobj.file_write("Output.txt", comments)
+    file_write("Output.txt", comments)
     # print len(comments)
 
 
@@ -33,25 +33,22 @@ def parse_txt():
     for i in range(len(comments)):
 
         if "procedure" in comments[i] or "Procedure" in comments[i]:
-            reg_proc = re.compile("Create a procedure(.*)$")
-            proc = reg_proc.search(comments[i]).group(1)
+            proc = create_procedure(comments[i])
             result = result + "\nProcedure: " + proc + "\n"
             count = 0
 
         if "Inserts" in comments[i]:
-            reg_insert = re.compile("Inserts the table records into(.*)$")
-            ins = reg_insert.search(comments[i]).group(1)
+            ins = insert_table(comments[i])
             result = result + "\nInsert into Table: " + ins + "\n"
             count = 0
         if "param" in comments[i]:
             if count == 0:
                 count = count + 1
                 result = result + "\nParameters:\n"
-            reg_param = re.compile(":param(.*)$")
-            param = reg_param.search(comments[i]).group(1) + "\n"
+            param = parameter(comments[i])
             result = result + param
 
-    FileReadWrite.ReadWriteobj.file_write("OutputText.txt", result)
+    file_write("OutputText.txt", result)
 
 
 pick_comments()
