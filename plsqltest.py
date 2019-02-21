@@ -16,7 +16,7 @@ def pick_comments():
         if foundq == 2:
             foundq = 0
 
-    FileReadWrite.ReadWriteobj.file_write("Ouput.txt", comments)
+    FileReadWrite.ReadWriteobj.file_write("Output.txt", comments)
     # print len(comments)
 
 
@@ -29,4 +29,4 @@ def parse_txt():
 
 
 pick_comments()
-parse_txt() 
+parse_txt()
