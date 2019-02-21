@@ -1,9 +1,10 @@
 import FileReadWrite
-
+import re
 contents = FileReadWrite.ReadWriteobj.file_read("pydocteradata.sql")
 
 
 def pick_comments():
+    global comments
     foundq = 0
     # print contents
     comments = []
@@ -25,8 +26,14 @@ def parse_json():
 
 
 def parse_txt():
-    pass
+    print comments
+    regproc = re.compile("procedure(.*)$")
+    for i in range(len(comments)):
 
+        if "procedure" in comments[i] or "Procedure" in comments[i]:
+            proc = regproc.search(comments[i]).group(1)
+
+    print "Procedure: " + proc
 
 pick_comments()
 parse_txt()
