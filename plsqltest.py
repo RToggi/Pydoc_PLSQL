@@ -29,27 +29,29 @@ def parse_json():
 def parse_txt():
     print comments
     count = 0
+    result = ""
     for i in range(len(comments)):
 
         if "procedure" in comments[i] or "Procedure" in comments[i]:
             reg_proc = re.compile("Create a procedure(.*)$")
             proc = reg_proc.search(comments[i]).group(1)
-            FileReadWrite.ReadWriteobj.file_write("OutputText.txt", "\nProcedure: " + proc + "\n")
+            result = result + "\nProcedure: " + proc + "\n"
             count = 0
 
         if "Inserts" in comments[i]:
             reg_insert = re.compile("Inserts the table records into(.*)$")
             ins = reg_insert.search(comments[i]).group(1)
-            FileReadWrite.ReadWriteobj.file_write("OutputText.txt",
-                                                  "\nInsert into Table: " + ins + "\n")
+            result = result + "\nInsert into Table: " + ins + "\n"
             count = 0
         if "param" in comments[i]:
             if count == 0:
                 count = count + 1
-                FileReadWrite.ReadWriteobj.file_write("OutputText.txt", "\nParameters:\n")
+                result = result + "\nParameters:\n"
             reg_param = re.compile(":param(.*)$")
             param = reg_param.search(comments[i]).group(1) + "\n"
-            FileReadWrite.ReadWriteobj.file_write("OutputText.txt", param)
+            result = result + param
+
+    FileReadWrite.ReadWriteobj.file_write("OutputText.txt", result)
 
 
 pick_comments()
